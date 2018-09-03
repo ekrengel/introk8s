@@ -19,16 +19,17 @@ func hello(w http.ResponseWriter, r *http.Request) {
 }
 
 func kubernetes(w http.ResponseWriter, r *http.Request) {
-	podName := os.Getenv("POD_NAME")
-	nodeName := os.Getenv("NODE_NAME")
+	podName := getEnvVar("POD_NAME")
+	nodeName := getEnvVar("NODE_NAME")
 
-	if podName == "" {
-		podName = "UNKNOWN"
-	}
 	fmt.Fprintf(w, "Pod name: %s\n", podName)
-
-	if nodeName == "" {
-		nodeName = "UNKNOWN"
-	}
 	fmt.Fprintf(w, "Node name: %s\n", nodeName)
+}
+
+func getEnvVar(envVar string) string {
+	v := os.Getenv(envVar)
+	if v == "" {
+		return "UNKNOWN"
+	}
+	return v
 }
