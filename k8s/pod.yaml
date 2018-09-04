@@ -18,3 +18,9 @@ spec:
         valueFrom:
           fieldRef:
             fieldPath: spec.nodeName
+    livenessProbe:
+      httpGet:
+        path: /hello
+        port: 8080
+      initialDelaySeconds: 3
+      periodSeconds: 3
