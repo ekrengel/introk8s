@@ -1,0 +1,6 @@
+language: go
+install: true
+go:
+  - 1.11
+script:
+  - go test ./...
