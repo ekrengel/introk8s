@@ -6,7 +6,6 @@ spec:
   containers:
   - name: my-first-pod
     image: ekrengel/introk8s:latest
-    imagePullPolicy: Always
     ports:
     - containerPort: 8080
     env:
@@ -18,9 +17,3 @@ spec:
         valueFrom:
           fieldRef:
             fieldPath: spec.nodeName
-    livenessProbe:
-      httpGet:
-        path: /hello
-        port: 8080
-      initialDelaySeconds: 3
-      periodSeconds: 3

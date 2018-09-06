@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-first-pod
+spec:
+  containers:
+  - name: my-first-pod
+    image: ekrengel/introk8s:latest
+    ports:
+    - containerPort: 8080
