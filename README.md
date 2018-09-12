@@ -2,7 +2,7 @@
 
 This workshop was developed for ACT-W Seattle 2018.
 
-## Pre-Workshop Installations
+## Installations
 
 There is a number of open-source software you will need to install to follow along with the workshop.
 
@@ -38,22 +38,6 @@ You can verify you have installed kubectl by running:
 kubectl version
 ```
 
-## Getting Started
+## Step by Step Guide
 
-1. Start your minikube by running:
-
-    ```bash
-    minikube start
-    ```
-
-2. Make sure your context is set to minikube.
-
-    ```bash
-    kubectl config get-contexts
-    ```
-
-    `minikube` should have a star next to it when you run this command. If it doesn't, you can set minikube to your context by running:
-
-    ```bash
-    kubectl config use-context minikube
-    ```
+If you would like to walk through the workshop on your own, follow the [step-by-step guide](./step_by_step.md).
