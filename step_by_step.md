@@ -37,7 +37,9 @@ A hello world image has been pushed to [Docker Hub](hub.docker.com/r/ekrengel/in
 
 ## First Pod
 
-We will now create our first pod. Create a file `k8s/pod.yaml`. Follow the solutions in `k8s/solutions/pod1.yaml`. TODO add description of file here.
+We will now create our first pod. Create a file `k8s/pod.yaml`.
+
+Follow the solutions in `k8s/solutions/pod1.yaml`. This file specifies that we are creating a resource of kind `pod` with the name `my-first-pod`. We will specify one container with the `ekrengel/introk8s:latest` image, which is the image of the application disucssed above. Additionally, we will need to specify a container port of `8080`, which is the port on which the application runs.
 
 We will now create our pod by applying the file.
 
@@ -72,7 +74,9 @@ kubectl delete -f k8s/pod.yaml
 
 ## Adding Environment Variables to our Pod
 
-We now want to add the environment variables to our pod. Add to your `k8s/pod.yaml` file by following the solutions in `k8s/solutions/pod2.yaml`. TODO add description of file here.
+We now want to add the environment variables to our pod.
+
+Add to your `k8s/pod.yaml` file by following the solutions in `k8s/solutions/pod2.yaml`. Under our container we will specify an env section, which takes an array of environment variables to expose on the container. We will set the environment variable `POD_NAME` to the value from the field `metadata.name`. We will also set the environment variable `NODE_NAME` to the value from the field `spec.nodeName`.
 
 We will now re-create our pod by applying the file.
 
@@ -106,7 +110,9 @@ kubectl get pods
 
 ## First Deployment
 
-We will now create our first deployment. Create a file `k8s/deployment.yaml`. Follow the solutions in `k8s/solutions/deployment.yaml`. TODO add description of file here.
+We will now create our first deployment. Create a file `k8s/deployment.yaml`.
+
+Follow the solutions in `k8s/solutions/deployment.yaml`. We will now create a resource of kind `deployment`. Under spec, we will specify we want to create 3 replicas of our container and that the selector for being considered one of those replicas is matching the label `app: my-first-deployment`. Also under spec, we will create the template section where we specify the the label to use and the containers to create. We will copy over most of what we created in our `k8s/pod.yaml` file under the template container.
 
 We will now create our deployment by applying the file.
 
@@ -143,7 +149,9 @@ We can now press Ctrl-C to stop the port forwarding.
 
 # Service
 
-We will now create our first service. Create a file `k8s/service.yaml`. Follow the solutions in `k8s/solutions/service.yaml`. TODO add description of file here.
+We will now create our first service. Create a file `k8s/service.yaml`.
+
+Follow the solutions in `k8s/solutions/service.yaml`. We will specify that we are creating a resource of kind `Service`. We can give our service a name under metadata. Under spec, we want to the service to be of type `NodePort` and the selector is the label we specified in the deployment above. We also need to specify the ports related to the service.
 
 Lets apply that.
 
@@ -170,7 +178,7 @@ curl <url-from-command-above>/kubernetes
 
 # Shutting Down
 
-When you're done, you will want to shut down your `minikube`.
+When you're done, you will want to delete these resources and shut down your `minikube`.
 
 ```bash
 kubectl delete -f k8s/deployment.yaml
